@@ -17,8 +17,11 @@ export async function convertTextToMarkdown(
     - テーブル形式で表現できる部分はテーブル形式で表現してください。テーブル化についてはテーブル化する際の要件を参照してください。
 
     ### テーブル化する際の要件 ###
+    - テーブル化の際は渡されるimageの情報内のテーブルイメージを参考にし、なるべく近いものになるようにしてください。
     - 元データの文字列は決して削除せず、テーブルの構成にふくめてください。
     - テーブル表現の際、空白となる要素は作らず、適切な値を設定してください。この場合のカラムやラインの追加による改変は許可しますが。削除は許可されません。以下に例を示します。
+    - 空欄に入る適切な値は、前後の情報から推測し、可能性が高い文字列で埋めてください。
+    - 情報を自然に表現するために、テーブルの構成を変更することは許可します。以下に例を示します。
     このようなテーブルがあった場合、
     | A | B |
     | -- |-- |
@@ -33,7 +36,6 @@ export async function convertTextToMarkdown(
     | E  | F |
     | E  | G |
     | H  | I |
-    空欄に入る適切な値は、前後の情報から推測することができる場合は推測してください。推測できない場合は、空欄にしてください。
     `;
   const data = `
     ### 情報 ###
@@ -52,7 +54,7 @@ export async function convertTextToMarkdown(
   console.log(chatCompletion.choices[0].message);
   if (chatCompletion.choices[0].message.content !== null) {
     fs.writeFileSync(
-      `${filaName}${i + 1}.md`,
+      `${outputFileName}${i + 1}.md`,
       chatCompletion.choices[0].message.content
     );
   } else {
