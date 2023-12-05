@@ -22,6 +22,11 @@ MODEL=gpt-4-1106-preview
 ```bash
 bun install
 ```
+
+## 軌跡
+
+[PDFファイルを渡したらmarkdown化したものをアウトプットしてくれるプログラムを作りたい！](https://zenn.dev/pistachiyoda/scraps/658a3844b4492b)
+
 ## コメント
 
 正直精度はイマイチ。
